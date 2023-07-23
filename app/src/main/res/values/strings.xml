@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Notes2Text</string>
+    <string name="login_placeholder">Login Placeholder</string>
+    <string name="title_activity_directory_access_controller">DirectoryAccessController</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="noFiles">No files in current folder</string>
+</resources>
