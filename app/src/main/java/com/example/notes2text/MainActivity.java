@@ -12,6 +12,7 @@ import android.os.Environment;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.notes2text.adapters.ActivitySwitchController;
 import com.example.notes2text.adapters.DirectoryActivity;
 import com.google.android.material.button.MaterialButton;
 
@@ -31,8 +32,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //Initially, check whether crucial permissions were granted by the user.
                 if (checkPermission()){
+                    //Inform user that permission had been previously granted.
                     Toast.makeText(MainActivity.this, "Permission Granted", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, DirectoryActivity.class);
+                    //Use android intents to switch to the main component of the app.
+                    //Development note: DirectoryActivity to test the directory, ActivitySwitchController
+                    // for the full version  with the navigation bar.
+                    Intent intent = new Intent(MainActivity.this, ActivitySwitchController.class);
                     String path = Environment.getExternalStorageDirectory().getPath();
                     intent.putExtra("path",path);
                     startActivity(intent);
