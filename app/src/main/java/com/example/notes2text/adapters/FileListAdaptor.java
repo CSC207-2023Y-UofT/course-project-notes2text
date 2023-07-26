@@ -1,9 +1,7 @@
-package com.example.notes2text.adaptors;
+package com.example.notes2text.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,8 +14,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.notes2text.DirectoryActivity;
-import com.example.notes2text.MainActivity;
 import com.example.notes2text.R;
 import com.example.notes2text.usecases.FileMenuInputBoundary;
 import com.example.notes2text.usecases.FileMenuInteractor;

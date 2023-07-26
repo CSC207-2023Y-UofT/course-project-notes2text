@@ -12,6 +12,7 @@ import android.os.Environment;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.notes2text.adapters.DirectoryActivity;
 import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity {

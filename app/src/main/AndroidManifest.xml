@@ -16,12 +16,8 @@
         android:theme="@style/Theme.Notes2Text"
         tools:targetApi="31" >
         <activity
-            android:name=".DirectoryActivity"
+            android:name=".adapters.DirectoryActivity"
             android:exported="false" />
-        <activity
-            android:name=".DirectoryAccessController"
-            android:exported="false"
-            android:label="@string/title_activity_directory_access_controller" />
         <activity
             android:name=".MainActivity"
             android:exported="true" >

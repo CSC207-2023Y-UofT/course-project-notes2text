@@ -1,4 +1,4 @@
-package com.example.notes2text;
+package com.example.notes2text.adapters;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.notes2text.adaptors.FileListAdaptor;
+import com.example.notes2text.R;
 
 import java.io.File;
 

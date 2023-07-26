@@ -6,4 +6,9 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="noFiles">No files in current folder</string>
+    <string name="ocr_fragment_text">OCR Fragment</string>
+    <string name="directory_fragment">Directory Fragment</string>
+    <string name="ocrButtonText">OCR</string>
+    <string name="directoryButtonText">Directory</string>
+    <string name="accountButtonText">Account</string>
 </resources>
