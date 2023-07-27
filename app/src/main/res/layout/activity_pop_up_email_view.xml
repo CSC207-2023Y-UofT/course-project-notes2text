@@ -1,0 +1,55 @@
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" android:backgroundTint="#EFE9E9" android:background="#121111">
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/settings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:backgroundTintMode="add" android:backgroundTint="#485661"
+            android:background="#0C0C0C">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="409dp"
+                android:layout_height="110dp" tools:layout_editor_absoluteY="-6dp"
+                android:backgroundTint="#3E4A50" android:background="#0C0C0C" android:id="@+id/linearLayout"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+            <TextView
+                    android:text="Change Email Address"
+                    android:layout_width="389dp"
+                    android:layout_height="68dp" android:id="@+id/textView3"
+                    android:textColor="#F4EFEF" android:textSize="34sp"
+                    android:fontFamily="sans-serif-light"
+                    app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="24dp"
+                    app:layout_constraintHorizontal_bias="0.8"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+                android:text="Confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" android:id="@+id/button2"
+                app:layout_constraintHorizontal_bias="0.459"
+                android:backgroundTint="#3F51B5" app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.392"/>
+        <TextView
+                android:text="Type new email address here"
+                android:layout_width="267dp"
+                android:layout_height="29dp" android:id="@+id/textView2"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.25" app:layout_constraintVertical_bias="0.192"
+                tools:text="Type new email address here" android:textSize="20sp" android:textColor="#FFFFFF"/>
+        <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/editTextEmail"
+                android:textColor="#FDFCFC" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.179" app:layout_constraintVertical_bias="0.274"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
