@@ -37,6 +37,15 @@ public class FileOpenInteractor {
                 intent.setDataAndType(Uri.parse(fileToOpen.getAbsolutePath()), fileType);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
+            } else if (fileType != "text/plain") {
+                // Pushes the file object to FileEditorActivity.
+                // Use intent system with the calling context (which is presumably the current activity context)
+                // Push to the text file editor activity.
+//                Intent docIntent = new Intent(context, FileEditorActivity.class);
+//                docIntent.putExtra("file", fileToOpen);
+//                context.startActivity(docIntent);
+
+                // On the way back, need to send the subdirectory path as extra object "path".
             } else {
                 Toast.makeText(context.getApplicationContext(), "File not openable through Notes2Text", Toast.LENGTH_SHORT).show();
             }
