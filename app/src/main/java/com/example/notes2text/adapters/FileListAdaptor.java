@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.notes2text.R;
+import com.example.notes2text.adapters.fragments.DirectoryAccessController;
 import com.example.notes2text.usecases.FileMenuInputBoundary;
 import com.example.notes2text.usecases.FileMenuInteractor;
 import com.example.notes2text.usecases.FileOpenInteractor;
@@ -25,6 +26,7 @@ public class FileListAdaptor extends RecyclerView.Adapter<FileListAdaptor.ViewHo
 
     Context context;
     File[] fileList;
+
 
     FileOpenInteractor fileOpener = new FileOpenInteractor();
 
@@ -64,11 +66,18 @@ public class FileListAdaptor extends RecyclerView.Adapter<FileListAdaptor.ViewHo
             public void onClick(View view) {
                 if(chosenFile.isDirectory()){
                     // If the file is a directory(folder), enter the folder.
-                    Intent intent = new Intent(context, DirectoryActivity.class);
+                    //DirectoryActivity for pure directory, DirectoryAccessController for whole app.
+                    Intent intent = new Intent(context, ActivitySwitchController.class);
                     String path = chosenFile.getAbsolutePath();
                     intent.putExtra("path",path);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
+
+//                    // Switch version.
+//                    ActivitySwitchController switchControl = new ActivitySwitchController();
+//                    String path = chosenFile.getAbsolutePath();
+//                    DirectoryAccessController dacFragment = DirectoryAccessController.newInstance(path);
+//                    switchControl.replaceFragment(dacFragment);
 
                 } else {
                     //Determine the type of the file in question.

@@ -16,19 +16,37 @@ import com.example.notes2text.databinding.ActivityViewBinding;
 public class ActivitySwitchController extends AppCompatActivity {
 
     ActivityViewBinding binding;
+    String initialPath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityViewBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        replaceFragment(new DirectoryAccessController());
+        //get the path from the intent that passed to this activity and bundle it.
+        initialPath = getIntent().getStringExtra("path");
+//        Bundle bundle = new Bundle();
+//        bundle.putString("path", initialPath);
+        DirectoryAccessController dirAcCntrl = DirectoryAccessController.newInstance(initialPath);
+        //Create a new instance of the directory controller and send the arguments to it.
+//        DirectoryAccessController dirAcCntrl = new DirectoryAccessController();
+//        dirAcCntrl.setArguments(bundle);
+        // On first load, open to directory view with the root address.
+        replaceFragment(dirAcCntrl);
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
             int itemId = item.getItemId();
             if (itemId == R.id.directoryButton) {
-                replaceFragment(new DirectoryAccessController());
+//                //Create a bundle containing the required information to send to the directory activity.
+//                //Required information: current root address, context.
+//                Bundle bundle2 = new Bundle();
+//                bundle2.putString("path", initialPath);
+//                //Create a new instance of the DirectoryAccess activity and pass the bundle to it.
+//                DirectoryAccessController dirAccess = new DirectoryAccessController();
+//                replaceFragment(dirAccess);
+                DirectoryAccessController directoryResume = DirectoryAccessController.newInstance(initialPath);
+                replaceFragment(directoryResume);
             } else if (itemId == R.id.OCRButton) {
                 replaceFragment(new OCRFragmentController());
             } else if (itemId == R.id.AccountButton) {
@@ -39,6 +57,7 @@ public class ActivitySwitchController extends AppCompatActivity {
         });
     }
 
+        //Switched to public from private.
         private void replaceFragment(Fragment fragment){
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
