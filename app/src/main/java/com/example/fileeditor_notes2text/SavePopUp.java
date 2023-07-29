@@ -3,40 +3,70 @@ package com.example.fileeditor_notes2text;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-public class SavePopUp extends AppCompatDialogFragment {
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class SavePopUp extends AppCompatActivity {
     private EditText fileName;
-    @NonNull
+    private String filePath;
+    private String content;
+
     @Override
-    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.save_file_name);
 
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.save_file_name, null);
+        fileName = findViewById(R.id.set_file_name);
 
-        builder.setView(view).setTitle("Set File Name")
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+        filePath = getIntent().getStringExtra("path");
+        content = getIntent().getStringExtra("text");
 
-                    }
-                })
-                .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                    }
-                });
-        // fileName = view.findViewById(R.id.set_file_name);
-
-        return builder.create();
     }
+
+    public void buttonCancel(View view) {
+        Intent switchToEditor = new Intent(SavePopUp.this, FileEditorActivity.class);
+        startActivity(switchToEditor);
+    }
+
+    public void buttonConfirm(View view) {
+        FileOutputStream fos = null;
+        String newName = fileName.getText().toString();
+
+        try {
+            fos = openFileOutput(newName, MODE_PRIVATE);
+            fos.write(content.getBytes());
+
+            Toast.makeText(this, "Saved to " + filePath + "/" + newName + ".txt",
+                    Toast.LENGTH_LONG).show();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+    }
+
 }

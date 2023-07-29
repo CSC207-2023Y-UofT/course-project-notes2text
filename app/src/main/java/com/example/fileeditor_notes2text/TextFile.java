@@ -36,13 +36,14 @@ public class TextFile {
 
             } else {
                 // Handle the case when the file does not exist
-                return "File not found";
+                this.content = "File not found";
             }
         } catch (IOException e) {
             e.printStackTrace();
             return "Error reading the file";
         }
-        this.content = stringBuilder.toString();
-        return this.content;
+        if (stringBuilder != null) {
+            this.content = stringBuilder.toString();
+        } return this.content;
     }
 }
